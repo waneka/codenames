@@ -9,5 +9,10 @@
         "react-hmre"
       ]
     }
-  }
+  },
+  "plugins": [
+    ["babel-root-import", {
+      "rootPathSuffix": "src/"
+    }]
+  ]
 }
