@@ -46,17 +46,20 @@ class GameBoard extends React.Component {
                     <div className="grid__item col-1-5"></div>
                     <div className="grid__item col-3-5">
                       <div className="grid grid--full">
-                        <div className="grid__item col-1-4 flex flex--jc--c">
+                        <div className="grid__item col-1-5 flex flex--jc--c">
                           <div onClick={() => this.toggleColor(word, 'BLUE')} className="col-1-1 bo--1 height--10 cursor--pointer blue">{' '}</div>
                         </div>
-                        <div className="grid__item col-1-4 flex flex--jc--c red">
+                        <div className="grid__item col-1-5 flex flex--jc--c red">
                           <div onClick={() => this.toggleColor(word, 'RED')} className="col-1-1 bo--1 height--10 cursor--pointer red">{' '}</div>
                         </div>
-                        <div className="grid__item col-1-4 flex flex--jc--c yellow">
+                        <div className="grid__item col-1-5 flex flex--jc--c yellow">
                           <div onClick={() => this.toggleColor(word, 'YELLOW')} className="col-1-1 bo--1 height--10 cursor--pointer yellow">{' '}</div>
                         </div>
-                        <div className="grid__item col-1-4 flex flex--jc--c">
+                        <div className="grid__item col-1-5 flex flex--jc--c">
                           <div onClick={() => this.toggleColor(word, 'WHITE')} className="col-1-1 bo--1 height--10 cursor--pointer white">{' '}</div>
+                        </div>
+                        <div className="grid__item col-1-5 flex flex--jc--c">
+                          <div onClick={() => this.toggleColor(word, 'BLACK')} className="col-1-1 bo--1 height--10 cursor--pointer black">{' '}</div>
                         </div>
                       </div>
                     </div>
