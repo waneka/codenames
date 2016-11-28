@@ -1,13 +1,22 @@
+import _ from 'lodash';
+
 import { WORDS } from '~/constants/words';
+import { RED, BLUE, ASSASSIN, BYSTANDER } from '~/constants/characters';
 
 export const INITIALIZE_GAME = 'INITIALIZE_GAME';
-export const TOGGLE_COLOR = 'TOGGLE_COLOR';
+export const TOGGLE_IS_REVEALED = 'TOGGLE_IS_REVEALED';
 
 export const initializeGame = () => (dispatch) => {
   const words = [];
+  const characters = initializeCharacters();
   for (let i = 0; i < 25; i++) {
     const word = WORDS[Math.floor(Math.random()*WORDS.length)];
-    words.push({text: word, id: `${word}-${i}`});
+    words.push({
+      text: word,
+      id: `${word}-${i}`,
+      character: characters[i],
+      isRevealed: false,
+    });
   }
 
   const deDuppedWords = deDupe(words);
@@ -18,11 +27,24 @@ export const initializeGame = () => (dispatch) => {
   });
 };
 
-export const toggleColor = (word, color) => ({
-  type: TOGGLE_COLOR,
+export const toggleIsRevealed = (word) => ({
+  type: TOGGLE_IS_REVEALED,
   word,
-  color,
 });
+
+const initializeCharacters = () => {
+  // start with 8 red, 8 blue. 7 bystanders, and 1 assassin
+  const characters = [
+    RED, RED, RED, RED, RED, RED, RED, RED,
+    BLUE, BLUE, BLUE, BLUE, BLUE, BLUE, BLUE, BLUE,
+    BYSTANDER, BYSTANDER, BYSTANDER, BYSTANDER, BYSTANDER, BYSTANDER, BYSTANDER,
+    ASSASSIN,
+  ];
+
+  // randomly add final red or blue
+  characters.push(Math.random > 0.5 ? RED : BLUE);
+  return _.shuffle(characters);
+};
 
 const deDupe = (words) => {
   const textMap = {};

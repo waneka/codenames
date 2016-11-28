@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import * as gameActions from '~/actions/game';
 
+import colorByCharacter from '~/constants/colorByCharacter';
+
 class GameBoard extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -17,8 +19,8 @@ class GameBoard extends React.Component {
     this.props.gameActions.initializeGame();
   }
 
-  toggleColor(word, color) {
-    this.props.gameActions.toggleColor(word, color);
+  toggleIsRevealed(word) {
+    this.props.gameActions.toggleIsRevealed(word);
   }
 
   render() {
@@ -38,27 +40,12 @@ class GameBoard extends React.Component {
               className={`grid__item col-1-5 mv-`}
             >
               <div className="ph-">
-                <div className={`bo--1 bor--5 flex flex--jc--c pv- ${word.color && word.color.toLowerCase() ? word.color.toLowerCase() : 'white'}`}>
-                  <div className="grid grid--full col-1-1 mt-">
-                    <div className="grid__item col-1-1 flex flex--jc--c pb font--lg">
+                <div
+                  onClick={() => this.toggleIsRevealed(word)}
+                  className={`bo--1 bor--5 cursor--pointer flex flex--jc--c pv- ${word.isRevealed && colorByCharacter[word.character] ? colorByCharacter[word.character] : 'white'}`}>
+                  <div className="grid grid--full col-1-1 pv">
+                    <div className="grid__item col-1-1 flex flex--jc--c font--lg">
                       {word.text}
-                    </div>
-                    <div className="grid__item col-1-5"></div>
-                    <div className="grid__item col-3-5">
-                      <div className="grid grid--full">
-                        <div className="grid__item col-1-4 flex flex--jc--c">
-                          <div onClick={() => this.toggleColor(word, 'BLUE')} className="col-1-1 bo--1 height--10 cursor--pointer blue">{' '}</div>
-                        </div>
-                        <div className="grid__item col-1-4 flex flex--jc--c red">
-                          <div onClick={() => this.toggleColor(word, 'RED')} className="col-1-1 bo--1 height--10 cursor--pointer red">{' '}</div>
-                        </div>
-                        <div className="grid__item col-1-4 flex flex--jc--c yellow">
-                          <div onClick={() => this.toggleColor(word, 'YELLOW')} className="col-1-1 bo--1 height--10 cursor--pointer yellow">{' '}</div>
-                        </div>
-                        <div className="grid__item col-1-4 flex flex--jc--c">
-                          <div onClick={() => this.toggleColor(word, 'WHITE')} className="col-1-1 bo--1 height--10 cursor--pointer white">{' '}</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
