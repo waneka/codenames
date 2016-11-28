@@ -7,23 +7,20 @@ export const INITIALIZE_GAME = 'INITIALIZE_GAME';
 export const TOGGLE_IS_REVEALED = 'TOGGLE_IS_REVEALED';
 
 export const initializeGame = () => (dispatch) => {
-  const words = [];
+  const indexes = initializeWordIndexes();
   const characters = initializeCharacters();
-  for (let i = 0; i < 25; i++) {
-    const word = WORDS[Math.floor(Math.random()*WORDS.length)];
-    words.push({
-      text: word,
-      id: `${word}-${i}`,
-      character: characters[i],
+  const words = indexes.map((wordIndex, index) => {
+    return {
+      text: WORDS[wordIndex],
+      id: `${WORDS[wordIndex]}-${index}`,
+      character: characters[index],
       isRevealed: false,
-    });
-  }
-
-  const deDuppedWords = deDupe(words);
+    };
+  });
 
   dispatch({
     type: INITIALIZE_GAME,
-    words: deDuppedWords,
+    words,
   });
 };
 
@@ -31,6 +28,19 @@ export const toggleIsRevealed = (word) => ({
   type: TOGGLE_IS_REVEALED,
   word,
 });
+
+// generates an array of 25 unique indexes
+const initializeWordIndexes = () => {
+  const interval = WORDS.length;
+  const indexes = [];
+  while (indexes.length < 25) {
+    let newIndex = Math.floor(Math.random() * interval);
+    if (indexes.indexOf(newIndex) === -1) {
+      indexes.push(newIndex);
+    }
+  }
+  return indexes;
+};
 
 const initializeCharacters = () => {
   // start with 8 red, 8 blue. 7 bystanders, and 1 assassin
@@ -44,26 +54,4 @@ const initializeCharacters = () => {
   // randomly add final red or blue
   characters.push(Math.random > 0.5 ? RED : BLUE);
   return _.shuffle(characters);
-};
-
-const deDupe = (words) => {
-  const textMap = {};
-  const cleanWords = [];
-  for (let i = 0; i < words.length; i++) {
-    if (!textMap[words[i].text]) {
-      textMap[words[i].text] = true;
-      cleanWords.push(words[i]);
-    }
-  }
-
-  if (cleanWords.length < 25) {
-    const numOfWordsToAdd = 25 - cleanWords.length;
-    for (let i = 0; i < numOfWordsToAdd; i++) {
-      const word = WORDS[Math.floor(Math.random()*WORDS.length)];
-      cleanWords.push({text: word, id: `${word}-${i}`});
-    }
-    return deDupe(cleanWords);
-  }
-
-  return cleanWords;
 };
