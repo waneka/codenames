@@ -50,7 +50,6 @@ class GameBoard extends React.Component {
                   </div>
                 </div>
               </div>
-
             </div>
           );
         })}
