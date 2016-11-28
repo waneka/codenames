@@ -52,6 +52,6 @@ const initializeCharacters = () => {
   ];
 
   // randomly add final red or blue
-  characters.push(Math.random > 0.5 ? RED : BLUE);
+  characters.push(Math.random() > 0.5 ? RED : BLUE);
   return _.shuffle(characters);
 };
