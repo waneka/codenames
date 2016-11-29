@@ -35,7 +35,7 @@ const initializeWordIndexes = () => {
   const indexes = [];
   while (indexes.length < 25) {
     let newIndex = Math.floor(Math.random() * interval);
-    if (indexes.indexOf(newIndex) === -1) {
+    if (!indexes.includes(newIndex)) {
       indexes.push(newIndex);
     }
   }
