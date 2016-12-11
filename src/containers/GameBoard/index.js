@@ -19,6 +19,10 @@ class GameBoard extends React.Component {
     this.props.gameActions.initializeGame();
   }
 
+  toggleIsRevealed(word) {
+    this.props.gameActions.toggleIsRevealed(word);
+  }
+
   render() {
     const { game } = this.props;
     const { words = [] } = game;
@@ -37,7 +41,8 @@ class GameBoard extends React.Component {
             >
               <div className="ph-">
                 <div
-                  className={`bo--1 bor--5 flex flex--jc--c pv- ${word.isRevealed && colorByCharacter[word.character] ? colorByCharacter[word.character] : 'white'}`}>
+                  onClick={() => this.toggleIsRevealed(word)}
+                  className={`bo--1 bor--5 cursor--pointer flex flex--jc--c pv- ${word.isRevealed && colorByCharacter[word.character] ? colorByCharacter[word.character] : 'white'}`}>
                   <div className="grid grid--full col-1-1 pv">
                     <div className="grid__item col-1-1 flex flex--jc--c font--lg">
                       {word.text}
