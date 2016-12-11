@@ -5,7 +5,6 @@ import { RED, BLUE, ASSASSIN, BYSTANDER } from '~/constants/characters';
 
 export const INITIALIZE_GAME = 'INITIALIZE_GAME';
 export const TOGGLE_IS_REVEALED = 'TOGGLE_IS_REVEALED';
-export const UPDATE_CLUEGIVER_MODE = 'UPDATE_CLUEGIVER_MODE';
 
 export const initializeGame = () => (dispatch) => {
   const indexes = initializeWordIndexes();
@@ -28,11 +27,6 @@ export const initializeGame = () => (dispatch) => {
 export const toggleIsRevealed = (word) => ({
   type: TOGGLE_IS_REVEALED,
   word,
-});
-
-export const updateCluegiverMode = (mode) => ({
-  type: UPDATE_CLUEGIVER_MODE,
-  mode,
 });
 
 // generates an array of 25 unique indexes
