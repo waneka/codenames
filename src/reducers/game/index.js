@@ -9,17 +9,15 @@ const game = (state = defaultState, action) => {
       return {
         words: action.words
       };
-    case actions.TOGGLE_COLOR: {
-      const newWords = _.cloneDeep(state.words);
-      newWords.forEach(word => {
+    case actions.TOGGLE_IS_REVEALED: {
+      const newWords = _.cloneDeep(state.words).map(word => {
         if (word.id === action.word.id) {
-          word.color = action.color;
+          word.isRevealed = !word.isRevealed;
         }
+        return word;
       });
-
-      // debugger
       return Object.assign({}, state, {
-        words: newWords,
+        words: newWords
       });
     }
     default:
