@@ -13,13 +13,6 @@ import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS fil
 import { syncHistoryWithStore } from 'react-router-redux';
 const channel = configureSockets()
 
-channel.on("message", payload => {
-  console.log(payload)
-})
-
-channel.join()
-  .receive("error", resp => { console.log("Unable to join", resp) })
-
 const store = configureStore(channel);
 
 // Create an enhanced history that syncs navigation events with the store

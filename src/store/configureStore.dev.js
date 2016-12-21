@@ -5,13 +5,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
-
-const broadcast = channel => () => next => action => {
-  channel.push("message", action)
-
-  let result = next(action);
-  return result;
-};
+import { broadcast, receive } from './sockets';
 
 export default function configureStore(channel, initialState) {
   const store = createStore(rootReducer, initialState, compose(
@@ -21,6 +15,8 @@ export default function configureStore(channel, initialState) {
     window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools
     )
   );
+
+  receive(channel, store);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
