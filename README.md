@@ -65,3 +65,31 @@ Slingshot offers a rich development experience using the following technologies:
 The starter kit includes a working example app that puts all of the above to use.
 ## Questions?
 Check out the [FAQ](/docs/FAQ.md)
+
+# Phoenix
+
+To start your Phoenix app:
+
+  * Install dependencies with `mix deps.get`
+  * Compile static assets with `npm run build`
+  * Start Phoenix endpoint with `mix phoenix.server`
+
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+
+## Learn more
+
+  * Official website: http://www.phoenixframework.org/
+  * Guides: http://phoenixframework.org/docs/overview
+  * Docs: https://hexdocs.pm/phoenix
+  * Mailing list: http://groups.google.com/group/phoenix-talk
+  * Source: https://github.com/phoenixframework/phoenix
+
+# Deployment
+
+requires you to login with the Heroku CLI. once logged in, run:
+
+```sh
+$ ./deploy.sh [branch-name-to-deploy]
+```

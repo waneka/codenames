@@ -18,8 +18,8 @@ export default {
   entry: './src/index',
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   output: {
-    path: `${__dirname}/dist`,
-    publicPath: '/',
+    path: `${__dirname}/priv/static/compiled`,
+    publicPath: '/compiled/',
     filename: '[name].[chunkhash].js'
   },
   plugins: [
@@ -50,6 +50,7 @@ export default {
         minifyCSS: true,
         minifyURLs: true
       },
+      filename: `${__dirname}/web/templates/page/index.html.eex`,
       inject: true,
       // Note that you can add custom options here if you need to handle other custom logic in index.html
       // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
