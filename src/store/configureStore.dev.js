@@ -6,10 +6,18 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
-export default function configureStore(initialState) {
+const broadcast = channel => () => next => action => {
+  channel.push("message", action)
+
+  let result = next(action);
+  return result;
+};
+
+export default function configureStore(channel, initialState) {
   const store = createStore(rootReducer, initialState, compose(
     // Add other middleware on this line...
     applyMiddleware(thunk),
+    applyMiddleware(broadcast(channel)),
     window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools
     )
   );

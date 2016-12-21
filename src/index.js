@@ -20,7 +20,7 @@ channel.on("message", payload => {
 channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-const store = configureStore();
+const store = configureStore(channel);
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
