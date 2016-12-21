@@ -2,7 +2,7 @@ defmodule Codenames.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Codenames.RoomChannel
+  channel "game:*", Codenames.GameChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket, timeout: 45_000
