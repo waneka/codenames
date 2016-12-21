@@ -1,1 +1,1 @@
-web: npm start
+web: MIX_ENV=prod mix phoenix.server
