@@ -11,7 +11,8 @@ import configureSockets from './store/configureSockets';
 require('./favicon.ico'); // Tell webpack to load favicon.ico
 import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
 import { syncHistoryWithStore } from 'react-router-redux';
-const channel = configureSockets()
+const currentPath = window.location.pathname;
+const channel = configureSockets(currentPath);
 
 const store = configureStore(channel);
 
