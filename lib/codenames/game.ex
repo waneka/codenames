@@ -39,6 +39,11 @@ defmodule Codenames.Game do
   end
 
   def handle_cast({:add, message}, state) do
-    {:noreply, state ++ [message]}
+    new_state = case message do
+      %{"type" => "INITIALIZE_GAME"} -> [message]
+      %{"type" => _ } -> state ++ [message]
+    end
+
+    {:noreply, new_state}
   end
 end
