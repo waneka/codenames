@@ -11,10 +11,6 @@ class GameBoard extends React.Component {
     super(props, context);
   }
 
-  componentDidMount() {
-    this.initializeGame();
-  }
-
   initializeGame() {
     this.props.gameActions.initializeGame();
   }

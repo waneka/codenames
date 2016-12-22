@@ -25,5 +25,10 @@ export const broadcast = channel => store => next => action => {
 export const receive = function(channel, store) {
   channel.on("message", action => { store.dispatch(action); });
   channel.join()
-    .receive("error", resp => { throw new Error("Unable to join", resp); });
+    .receive("error", resp => { throw new Error("Unable to join", resp); })
+    .receive("ok", ({previous_events}) => {
+      previous_events.forEach(action => {
+        store.dispatch(action);
+      });
+    });
 };
