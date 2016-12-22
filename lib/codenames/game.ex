@@ -17,6 +17,10 @@ defmodule Codenames.Game do
     GenServer.call(via_tuple(room), :read)
   end
 
+  def add(room, message) do
+    GenServer.cast(via_tuple(room), {:add, message})
+  end
+
   def stop(room) do
     GenServer.stop(via_tuple(room))
   end
@@ -32,5 +36,9 @@ defmodule Codenames.Game do
 
   def handle_call(:read, _, state) do
     {:reply, state, state}
+  end
+
+  def handle_cast({:add, message}, state) do
+    {:noreply, state ++ [message]}
   end
 end

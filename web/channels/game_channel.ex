@@ -1,5 +1,6 @@
 defmodule Codenames.GameChannel do
   use Phoenix.Channel
+  alias Codenames.{GameSupervisor, Game}
   intercept ["message"]
 
   def join("game:" <> room_id, _params, socket) do
@@ -7,6 +8,11 @@ defmodule Codenames.GameChannel do
   end
 
   def handle_in("message", payload, socket) do
+    "game:" <> topic = socket.topic
+
+    GameSupervisor.find_or_create(topic)
+    Game.add(topic, payload)
+
     broadcast! socket, "message", payload
     {:noreply, socket}
   end
