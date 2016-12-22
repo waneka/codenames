@@ -27,7 +27,6 @@ defmodule Codenames.Web do
       use Phoenix.Controller
 
       import Codenames.Router.Helpers
-      import Codenames.Gettext
     end
   end
 
@@ -43,7 +42,6 @@ defmodule Codenames.Web do
 
       import Codenames.Router.Helpers
       import Codenames.ErrorHelpers
-      import Codenames.Gettext
     end
   end
 
@@ -56,7 +54,6 @@ defmodule Codenames.Web do
   def channel do
     quote do
       use Phoenix.Channel
-      import Codenames.Gettext
     end
   end
 
