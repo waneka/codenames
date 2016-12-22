@@ -28,7 +28,7 @@ npm run build
 
 echo "tracking compiled assets in git for deployment"
 git mv web/templates/page/.gitignore web/templates/page/.dont-ignore
-git add web/templates/page/index.html.eex
+git add web/templates/page/show.html.eex
 
 git mv priv/static/.gitignore priv/static/.dont-ignore
 git add priv/static/compiled

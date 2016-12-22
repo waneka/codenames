@@ -16,7 +16,8 @@ defmodule Codenames.Router do
   scope "/", Codenames do
     pipe_through :browser # Use the default browser stack
 
-    get "/*path", PageController, :index
+    get "/", PageController, :index
+    get "/*path", PageController, :show
   end
 
   # Other scopes may use custom stacks.
