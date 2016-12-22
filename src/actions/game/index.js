@@ -6,6 +6,7 @@ import { RED, BLUE, ASSASSIN, BYSTANDER } from '~/constants/characters';
 export const INITIALIZE_GAME = 'INITIALIZE_GAME';
 export const TOGGLE_IS_REVEALED = 'TOGGLE_IS_REVEALED';
 export const UPDATE_CLUEGIVER_MODE = 'UPDATE_CLUEGIVER_MODE';
+export const ACTIONS_FOR_WEBSOCKETS = [INITIALIZE_GAME, TOGGLE_IS_REVEALED]
 
 export const initializeGame = () => (dispatch) => {
   const indexes = initializeWordIndexes();
