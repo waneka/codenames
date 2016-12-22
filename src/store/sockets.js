@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import * as actions from '~/actions/game';
+import { ACTIONS_FOR_WEBSOCKETS } from '~/actions/game';
 
 
 export const broadcast = channel => store => next => action => {
-  const isCustomAction = _.includes(Object.keys(actions), action.type);
+  const isCustomAction = _.includes(ACTIONS_FOR_WEBSOCKETS, action.type);
   const isFromServer = !!action.fromServer;
   let result;
 
