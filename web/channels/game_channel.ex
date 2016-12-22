@@ -20,10 +20,9 @@ defmodule Codenames.GameChannel do
   def handle_out("message", payload, socket) do
     if current_room?(socket.assigns[:room_id], socket.topic) do
       push socket, "message", payload
-      {:noreply,socket}
-    else
-      {:noreply, socket}
     end
+
+    {:noreply,socket}
   end
 
   defp current_room?(room_id, "game:" <> sub_topic) do
