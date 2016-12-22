@@ -10,6 +10,7 @@ defmodule Codenames do
     children = [
       # Start the endpoint when the application starts
       supervisor(Codenames.Endpoint, []),
+      supervisor(Codenames.GameSupervisor, []),
       # Start your own worker by calling: Codenames.Worker.start_link(arg1, arg2, arg3)
       # worker(Codenames.Worker, [arg1, arg2, arg3]),
     ]

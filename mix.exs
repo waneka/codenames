@@ -17,7 +17,7 @@ defmodule Codenames.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Codenames, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gproc]]
   end
 
   # Specifies which paths to compile per environment.
@@ -31,6 +31,7 @@ defmodule Codenames.Mixfile do
     [{:phoenix, "~> 1.2.0"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_html, "~> 2.6"},
+     {:gproc, "0.5.0"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"}]
   end
