@@ -16,7 +16,10 @@ class CluegiverBoard extends React.Component {
   }
 
   initializeGame() {
-    this.props.gameActions.initializeGame();
+    const { params } = this.props;
+    const { room } = params;
+
+    this.props.gameActions.initializeGame(room);
   }
 
   updateCluegiverMode(mode) {
@@ -90,6 +93,7 @@ class CluegiverBoard extends React.Component {
 }
 
 CluegiverBoard.propTypes = {
+  params: PropTypes.object.isRequired,
   gameActions: PropTypes.object.isRequired,
   game: PropTypes.object.isRequired,
 };

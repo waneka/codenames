@@ -12,7 +12,10 @@ class GameBoard extends React.Component {
   }
 
   initializeGame() {
-    this.props.gameActions.initializeGame();
+    const { params } = this.props;
+    const { room } = params;
+
+    this.props.gameActions.initializeGame(room);
   }
 
   render() {
@@ -50,6 +53,7 @@ class GameBoard extends React.Component {
 }
 
 GameBoard.propTypes = {
+  params: PropTypes.object.isRequired,
   gameActions: PropTypes.object.isRequired,
   game: PropTypes.object.isRequired,
 };

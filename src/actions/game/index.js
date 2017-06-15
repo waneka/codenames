@@ -6,15 +6,17 @@ import { RED, BLUE, ASSASSIN, BYSTANDER } from '~/constants/characters';
 export const INITIALIZE_GAME = 'INITIALIZE_GAME';
 export const TOGGLE_IS_REVEALED = 'TOGGLE_IS_REVEALED';
 export const UPDATE_CLUEGIVER_MODE = 'UPDATE_CLUEGIVER_MODE';
-export const ACTIONS_FOR_WEBSOCKETS = [INITIALIZE_GAME, TOGGLE_IS_REVEALED]
+export const ACTIONS_FOR_WEBSOCKETS = [INITIALIZE_GAME, TOGGLE_IS_REVEALED];
 
-export const initializeGame = () => (dispatch) => {
-  const indexes = initializeWordIndexes();
+export const initializeGame = (room = '') => (dispatch) => {
+  const wordsToUse = WORDS[room.toUpperCase()] || WORDS.DEFAULT;
+
+  const indexes = initializeWordIndexes(wordsToUse);
   const characters = initializeCharacters();
   const words = indexes.map((wordIndex, index) => {
     return {
-      text: WORDS[wordIndex],
-      id: `${WORDS[wordIndex]}-${index}`,
+      text: wordsToUse[wordIndex],
+      id: `${wordsToUse[wordIndex]}-${index}`,
       character: characters[index],
       isRevealed: false,
     };
@@ -37,8 +39,8 @@ export const updateCluegiverMode = (mode) => ({
 });
 
 // generates an array of 25 unique indexes
-const initializeWordIndexes = () => {
-  const interval = WORDS.length;
+const initializeWordIndexes = (wordsToUse) => {
+  const interval = wordsToUse.length;
   const indexes = [];
   while (indexes.length < 25) {
     let newIndex = Math.floor(Math.random() * interval);
