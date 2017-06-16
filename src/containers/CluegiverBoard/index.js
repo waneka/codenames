@@ -55,6 +55,7 @@ class CluegiverBoard extends React.Component {
               key={word.id}
               toggleIsRevealed={(wordToReveal) => this.toggleIsRevealed(wordToReveal)}
               word={word}
+              isClues={true}
             />
           );
         })}
