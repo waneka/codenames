@@ -35,7 +35,7 @@ git add priv/static/compiled
 git commit -m "compile assets for production"
 
 echo "returning to old branch"
-git co -
+git checkout -
 
 echo deploying branch $branch_to_deploy\ to heroku
 git push --force heroku tmp:master
