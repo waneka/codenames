@@ -7,10 +7,10 @@ function WordCard(props) {
   let cardClasses = `bo--1 bor--5 flex flex--jc--c align-items--center height--80 `;
 
   if (isClues) {
-    cardClasses += word.isRevealed ? 'opacity--4-10 ' : 'cursor--pointer ';
-    cardClasses += colorByCharacter[word.character] || 'white ';
+    cardClasses += word.isRevealed ? ' opacity--4-10 ' : ' cursor--pointer ';
+    cardClasses += colorByCharacter[word.character] || ' white ';
   } else {
-    cardClasses += word.isRevealed && colorByCharacter[word.character] ? colorByCharacter[word.character] : 'white ';
+    cardClasses += word.isRevealed && colorByCharacter[word.character] ? ' ' + colorByCharacter[word.character] : ' white ';
   }
 
   function toggleIsRevealed(word) {
