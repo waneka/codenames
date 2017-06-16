@@ -44,10 +44,10 @@ class CluegiverBoard extends React.Component {
       <div className="grid grid--full">
         <div className="grid__item col-1-1 mt- flex flex--jc--sb">
           <div>
-            <button onClick={() => this.updateCluegiverMode(GRID)}>Grid Mode</button>
-            <button onClick={() => this.updateCluegiverMode(LIST)}>List Mode</button>
+            <button className="btn--success p- ml-" onClick={() => this.updateCluegiverMode(GRID)}>Grid Mode</button>
+            <button className="btn--success p- ml-" onClick={() => this.updateCluegiverMode(LIST)}>List Mode</button>
           </div>
-          <button className="" onClick={() => this.initializeGame()}>New Game</button>
+          <button className="btn--primary p- mr-" onClick={() => this.initializeGame()}>New Game</button>
         </div>
         {cluegiverMode === GRID && words.map(word => {
           return (
@@ -70,7 +70,7 @@ class CluegiverBoard extends React.Component {
           );
         })}
         {cluegiverMode === LIST && (
-          <div className="grid__item col-1-1">
+          <div className="grid__item col-1-1 mt-">
             <div className="grid grid--full">
               <div className="grid__item col-1-4">
                 <WordList words={redWords} character={RED} />

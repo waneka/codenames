@@ -1126,5 +1126,6 @@ export const WORDS = {
     "oregano",
     "anchovies",
     "bok choy",
+    "secret pizza",
   ],
 };
