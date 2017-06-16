@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import * as gameActions from '~/actions/game';
 
-import colorByCharacter from '~/constants/colorByCharacter';
 import { RED, BLUE, ASSASSIN, BYSTANDER } from '~/constants/characters';
 import { GRID, LIST } from '~/constants/cluegiverModes';
 
 import WordList from '~/components/WordList';
+import WordCard from '~/components/WordCard';
 
 class CluegiverBoard extends React.Component {
   constructor(props, context) {
@@ -51,22 +51,11 @@ class CluegiverBoard extends React.Component {
         </div>
         {cluegiverMode === GRID && words.map(word => {
           return (
-            <div
+            <WordCard
               key={word.id}
-              className={`grid__item col-1-5 mv-`}
-            >
-              <div className="ph-">
-                <div
-                  onClick={() => word.isRevealed ? null : this.toggleIsRevealed(word)}
-                  className={`bo--1 bor--5 flex flex--jc--c pv- ${word.isRevealed ? 'opacity--4-10' : 'cursor--pointer'} ${colorByCharacter[word.character] ? colorByCharacter[word.character] : 'white'}`}>
-                  <div className="grid grid--full col-1-1 pv">
-                    <div className="grid__item col-1-1 flex flex--jc--c font--lg">
-                      {word.text}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              toggleIsRevealed={(wordToReveal) => this.toggleIsRevealed(wordToReveal)}
+              word={word}
+            />
           );
         })}
         {cluegiverMode === LIST && (

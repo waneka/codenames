@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import * as gameActions from '~/actions/game';
 
-import colorByCharacter from '~/constants/colorByCharacter';
+import WordCard from '~/components/WordCard';
 
 class GameBoard extends React.Component {
   constructor(props, context) {
@@ -30,21 +30,10 @@ class GameBoard extends React.Component {
         </div>
         {words.map(word => {
           return (
-            <div
+            <WordCard
+              word={word}
               key={word.id}
-              className={`grid__item col-1-5 mv-`}
-            >
-              <div className="ph-">
-                <div
-                  className={`bo--1 bor--5 flex flex--jc--c pv- ${word.isRevealed && colorByCharacter[word.character] ? colorByCharacter[word.character] : 'white'}`}>
-                  <div className="grid grid--full col-1-1 pv">
-                    <div className="grid__item col-1-1 flex flex--jc--c font--lg">
-                      {word.text}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            />
           );
         })}
       </div>
