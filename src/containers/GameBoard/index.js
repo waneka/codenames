@@ -26,7 +26,7 @@ class GameBoard extends React.Component {
       <div className="grid grid--full">
         <div className="grid__item col-1-1 mt- flex flex--jc--sb">
           <div></div>
-          <button className="" onClick={() => this.initializeGame()}>New Game</button>
+          <button className="btn--primary p- mr-" onClick={() => this.initializeGame()}>New Game</button>
         </div>
         {words.map(word => {
           return (

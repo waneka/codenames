@@ -1281,3 +1281,39 @@ $spacing__padding:                         $base__spacing-unit !default;
 .opacity--4-10 {
   opacity: 0.4;
 }
+
+button {
+  border: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+.btn--primary {
+  background-color: #3498DB;
+  color: white;
+  font-weight: bold;
+}
+
+.btn--primary:hover {
+  background-color: #1E8BC3;
+}
+
+.btn--primary:active {
+  background-color: #2574A9;
+}
+
+.btn--success {
+  background-color: #1BBC9B;
+  color: white;
+  font-weight: bold;
+}
+
+.btn--success:hover {
+  background-color: #03A678;
+}
+
+.btn--success:active {
+  background-color: #049372;
+}
