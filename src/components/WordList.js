@@ -9,11 +9,11 @@ function WordList(props) {
     <div className="grid grid--full">
       <div className={`grid__item col-1-1 ${colorByCharacter[character]}`}>
         <h4 className="ph">Still to guess:</h4>
-        { words.filter(word => !word.isRevealed).map(word => <p className="ph" key={word.id}>{word.text}</p>) }
+        {words.filter(word => !word.isRevealed).map(word => <p className="ph" key={word.id}>{word.text}</p>)}
       </div>
       <div className={`grid__item col-1-1 mt opacity--4-10 ${colorByCharacter[character]}`}>
         <h5 className="ph">Already guessed:</h5>
-        { words.filter(word => word.isRevealed).map(word => <p className="ph" key={word.id}>{word.text}</p>) }
+        {words.filter(word => word.isRevealed).map(word => <p className="ph" key={word.id}>{word.text}</p>)}
       </div>
     </div>
   );
