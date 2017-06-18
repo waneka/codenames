@@ -25,11 +25,11 @@ function WordCard(props) {
         onClick={() => word.isRevealed ? null : toggleIsRevealed(word)}
         className={cardClasses}
       >
-        <div className="grid grid--full col-1-1 pv card">
-          <div className="grid__item col-1-1 text--center font--lg front">
+        <div className="grid grid--full col-1-1 card">
+          <div className="grid__item col-1-1 flex align-items--center flex--jc--c font--lg front">
             {word.text}
           </div>
-          <div className={`grid__item col-1-1 text--center font--lg back ${colorByCharacter[word.character]}`}>
+          <div className={`grid__item col-1-1 flex align-items--center flex--jc--c font--lg back ${colorByCharacter[word.character]}`}>
             {word.text}
           </div>
         </div>
