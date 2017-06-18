@@ -27,10 +27,10 @@ function WordCard(props) {
       >
         <div className="grid grid--full col-1-1 card">
           <div className="grid__item col-1-1 flex align-items--center flex--jc--c text--center font--lg front">
-            {word.text}
+            {word.text.toLowerCase()}
           </div>
           <div className={`grid__item col-1-1 flex align-items--center flex--jc--c text--center font--lg back ${colorByCharacter[word.character]}`}>
-            {word.text}
+            {word.text.toLowerCase()}
           </div>
         </div>
       </div>
