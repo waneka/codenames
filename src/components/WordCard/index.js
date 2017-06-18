@@ -4,7 +4,7 @@ import colorByCharacter from '~/constants/colorByCharacter';
 
 function WordCard(props) {
   const { word, isClues } = props;
-  let cardClasses = `bo--1 bor--5 flex flex--jc--c align-items--center height--80 card--container `;
+  let cardClasses = `bo--1 bor--5 flex flex--jc--c align-items--center card--container `;
 
   if (isClues) {
     cardClasses += ' flip ';
@@ -19,20 +19,18 @@ function WordCard(props) {
 
   return (
     <div
-      className={`grid__item col-1-5 mv-`}
+      className={`grid__item col-1-5 height--80 mv-`}
     >
-      <div className="ph-">
-        <div
-          onClick={() => word.isRevealed ? null : toggleIsRevealed(word)}
-          className={cardClasses}
-        >
-          <div className="grid grid--full col-1-1 pv card">
-            <div className="grid__item col-1-1 text--center font--lg front">
-              {word.text}
-            </div>
-            <div className={`grid__item col-1-1 text--center font--lg back ${colorByCharacter[word.character]}`}>
-              {word.text}
-            </div>
+      <div
+        onClick={() => word.isRevealed ? null : toggleIsRevealed(word)}
+        className={cardClasses}
+      >
+        <div className="grid grid--full col-1-1 pv card">
+          <div className="grid__item col-1-1 text--center font--lg front">
+            {word.text}
+          </div>
+          <div className={`grid__item col-1-1 text--center font--lg back ${colorByCharacter[word.character]}`}>
+            {word.text}
           </div>
         </div>
       </div>

@@ -1360,12 +1360,12 @@ button:focus {
   transform: rotateY(-180deg);
 }
 
-.flip .front {
+.card--container.flip .front {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-.flip .back {
+.card--container.flip .back {
   -webkit-transform: rotateY(0deg);
   transform: rotateY(0deg);
 }
