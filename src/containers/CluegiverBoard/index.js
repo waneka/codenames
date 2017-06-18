@@ -47,7 +47,7 @@ class CluegiverBoard extends React.Component {
             <button className="btn--success p-" onClick={() => this.updateCluegiverMode(GRID)}>Grid Mode</button>
             <button className="btn--success p- ml-" onClick={() => this.updateCluegiverMode(LIST)}>List Mode</button>
           </div>
-          <button className="btn--primary p- mr-" onClick={() => this.initializeGame()}>New Game</button>
+          <button className="btn--primary p-" onClick={() => this.initializeGame()}>New Game</button>
         </div>
         {cluegiverMode === GRID && words.map(word => {
           return (
