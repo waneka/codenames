@@ -1235,29 +1235,6 @@ $spacing__padding:                         $base__spacing-unit !default;
   display: flex;
 }
 
-.blue {
-  background-color: #2980b9;
-  color: white;
-}
-
-.red {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.yellow {
-  background-color: #f1c40f;
-}
-
-.white {
-  background-color: white;
-}
-
-.black {
-  background-color: black;
-  color: white;
-}
-
 .bo--1 {
   border: 1px solid #7f8c8d;
 }
@@ -1397,5 +1374,28 @@ button:focus {
   transform: rotateY(0deg);
 }
 
+
+.blue {
+  background-color: #2980b9;
+  color: white;
+}
+
+.red {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.yellow {
+  background-color: #f1c40f;
+}
+
+.white {
+  background-color: white;
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
 
 
