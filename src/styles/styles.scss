@@ -3,6 +3,14 @@ $vin-blue: #5bb7db;
 $vin-green: #60b044;
 $vin-red: #ff0000;
 
+html {
+  box-sizing: border-box;
+}
+
+*, :after, :before {
+  box-sizing: inherit;
+}
+
 /* Styles */
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -18,7 +26,7 @@ body {
 }
 
 html {
-  background-color: #ecf0f1;
+  background-color: #7f8c8d;
 }
 
 td {
@@ -1227,29 +1235,6 @@ $spacing__padding:                         $base__spacing-unit !default;
   display: flex;
 }
 
-.blue {
-  background-color: #2980b9;
-  color: white;
-}
-
-.red {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.yellow {
-  background-color: #f1c40f;
-}
-
-.white {
-  background-color: white;
-}
-
-.black {
-  background-color: black;
-  color: white;
-}
-
 .bo--1 {
   border: 1px solid #7f8c8d;
 }
@@ -1329,3 +1314,85 @@ button:focus {
 .text--center {
   text-align: center;
 }
+
+/* card flip animations */
+
+.card--container {
+  height: 100%;
+  width: 100%;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  -webkit-transition: .6s;
+  transition: .6s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.card--container.flip .front {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.card--container.flip .back {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  background-color: white;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: .6s;
+  transition: .6s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.card .front {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.card .back {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+.blue {
+  background-color: #4183D7 !important;
+  color: white;
+}
+
+.red {
+  background-color: #e74c3c !important;
+  color: white;
+}
+
+.yellow {
+  background-color: #F89406 !important;
+  color: white;
+}
+
+.black {
+  background-color: black !important;
+  color: white;
+}
+
+
