@@ -4,7 +4,7 @@ import colorByCharacter from '~/constants/colorByCharacter';
 
 function WordCard(props) {
   const { word, isClues } = props;
-  let cardClasses = `bo--1 bor--5 flex flex--jc--c align-items--center card--container `;
+  let cardClasses = `flex flex--jc--c align-items--center card--container `;
 
   if (isClues) {
     cardClasses += ' flip ';
