@@ -1375,28 +1375,22 @@ button:focus {
   transform: rotateY(-180deg);
 }
 
-
-
 .blue {
-  background-color: #2980b9;
+  background-color: #2980b9 !important;
   color: white;
 }
 
 .red {
-  background-color: #e74c3c;
+  background-color: #e74c3c !important;
   color: white;
 }
 
 .yellow {
-  background-color: #f1c40f;
-}
-
-.white {
-  background-color: white;
+  background-color: #f1c40f !important;
 }
 
 .black {
-  background-color: black;
+  background-color: black !important;
   color: white;
 }
 
