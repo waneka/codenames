@@ -49,15 +49,20 @@ class CluegiverBoard extends React.Component {
     const bystanders = words.filter(word => word.character === BYSTANDER);
     const assassin = words.filter(word => word.character === ASSASSIN);
 
-    console.log('timer: ', timer)
-
     return (
       <div className="grid">
         <div className="grid__item col-1-1 mt- flex flex--jc--sb">
           <div>
             <button className="btn--success p-" onClick={() => this.updateCluegiverMode(GRID)}>Grid Mode</button>
             <button className="btn--success p- ml-" onClick={() => this.updateCluegiverMode(LIST)}>List Mode</button>
-            <button className="btn--success p- ml" onClick={() => this.startTimer()}>Start a timer</button>
+            {words.length && (
+              <div className="ml+">
+                <button className="btn--success p-" onClick={() => this.startTimer()}>Start a timer</button>
+                {timer && (
+                  <div className="ml font--lg color--white">{timer}</div>
+                )}
+              </div>
+            )}
           </div>
           <button className="btn--primary p-" onClick={() => this.initializeGame()}>New Game</button>
         </div>
