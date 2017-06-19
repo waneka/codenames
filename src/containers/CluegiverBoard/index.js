@@ -55,16 +55,18 @@ class CluegiverBoard extends React.Component {
           <div>
             <button className="btn--success p-" onClick={() => this.updateCluegiverMode(GRID)}>Grid Mode</button>
             <button className="btn--success p- ml-" onClick={() => this.updateCluegiverMode(LIST)}>List Mode</button>
-            {words.length && (
-              <div className="ml+">
-                <button className="btn--success p-" onClick={() => this.startTimer()}>Start a timer</button>
-                {timer && (
-                  <div className="ml font--lg color--white">{timer}</div>
-                )}
-              </div>
-            )}
           </div>
-          <button className="btn--primary p-" onClick={() => this.initializeGame()}>New Game</button>
+          {words.length && (
+            <div className="flex align-items--center">
+              <button className="btn--success p-" onClick={() => this.startTimer()}>Start a timer</button>
+              {timer && (
+                <div className="ml font--lg color--white">{timer}</div>
+              )}
+            </div>
+          )}
+          <div>
+            <button className="btn--primary p-" onClick={() => this.initializeGame()}>New Game</button>
+          </div>
         </div>
         {cluegiverMode === GRID && words.map(word => {
           return (
