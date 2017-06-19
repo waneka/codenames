@@ -34,7 +34,7 @@ export const updateTimerValue = (value) => ({
   value,
 });
 
-export const timerCountdown = () => (getState, dispatch) => {
+export const timerCountdown = () => (dispatch, getState) => {
   const { game } = getState();
   let { timer } = game;
 
