@@ -32,9 +32,18 @@ class CluegiverBoard extends React.Component {
     }
   }
 
+  startTimer() {
+    const { game } = this.props;
+    const { timer } = game;
+
+    if (!timer && confirm(`Are you sure you want to start a 1 min timer?`)) {
+      this.props.gameActions.startTimer();
+    }
+  }
+
   render() {
     const { game } = this.props;
-    const { words = [], cluegiverMode = GRID } = game;
+    const { words = [], cluegiverMode = GRID, timer } = game;
     const redWords = words.filter(word => word.character === RED);
     const blueWords = words.filter(word => word.character === BLUE);
     const bystanders = words.filter(word => word.character === BYSTANDER);
@@ -47,7 +56,17 @@ class CluegiverBoard extends React.Component {
             <button className="btn--success p-" onClick={() => this.updateCluegiverMode(GRID)}>Grid Mode</button>
             <button className="btn--success p- ml-" onClick={() => this.updateCluegiverMode(LIST)}>List Mode</button>
           </div>
-          <button className="btn--primary p-" onClick={() => this.initializeGame()}>New Game</button>
+          {words.length ? (
+            <div className="flex align-items--center">
+              <button className="btn--success p-" onClick={() => this.startTimer()}>Start a timer</button>
+              {timer && (
+                <div className="ml font--xl color--white">{timer}</div>
+              )}
+            </div>
+          ) : (<div></div>)}
+          <div>
+            <button className="btn--primary p-" onClick={() => this.initializeGame()}>New Game</button>
+          </div>
         </div>
         {cluegiverMode === GRID && words.map(word => {
           return (

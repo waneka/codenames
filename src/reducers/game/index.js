@@ -3,7 +3,9 @@ import * as actions from '~/actions/game';
 import { GRID } from '~/constants/cluegiverModes';
 
 const defaultState = {
-  cluegiverMode: GRID
+  cluegiverMode: GRID,
+  words: [],
+  timer: undefined,
 };
 
 const game = (state = defaultState, action) => {
@@ -28,6 +30,10 @@ const game = (state = defaultState, action) => {
         cluegiverMode: action.mode,
       });
     }
+    case actions.UPDATE_TIMER_VALUE:
+      return Object.assign({}, state, {
+        timer: action.value,
+      });
     default:
       return state;
   }
