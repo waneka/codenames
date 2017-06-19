@@ -32,13 +32,24 @@ class CluegiverBoard extends React.Component {
     }
   }
 
+  startTimer() {
+    const { game } = this.props;
+    const { timer } = game;
+
+    if (!timer && confirm(`Are you sure you want to start a 1 min timer?`)) {
+      this.props.gameActions.startTimer();
+    }
+  }
+
   render() {
     const { game } = this.props;
-    const { words = [], cluegiverMode = GRID } = game;
+    const { words = [], cluegiverMode = GRID, timer } = game;
     const redWords = words.filter(word => word.character === RED);
     const blueWords = words.filter(word => word.character === BLUE);
     const bystanders = words.filter(word => word.character === BYSTANDER);
     const assassin = words.filter(word => word.character === ASSASSIN);
+
+    console.log('timer: ', timer)
 
     return (
       <div className="grid">
@@ -46,6 +57,7 @@ class CluegiverBoard extends React.Component {
           <div>
             <button className="btn--success p-" onClick={() => this.updateCluegiverMode(GRID)}>Grid Mode</button>
             <button className="btn--success p- ml-" onClick={() => this.updateCluegiverMode(LIST)}>List Mode</button>
+            <button className="btn--success p- ml" onClick={() => this.startTimer()}>Start a timer</button>
           </div>
           <button className="btn--primary p-" onClick={() => this.initializeGame()}>New Game</button>
         </div>
