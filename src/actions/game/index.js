@@ -30,7 +30,7 @@ export const initializeGame = (room = '') => (dispatch) => {
 };
 
 export const updateTimerValue = (value) => ({
-  UPDATE_TIMER_VALUE,
+  type: UPDATE_TIMER_VALUE,
   value,
 });
 
